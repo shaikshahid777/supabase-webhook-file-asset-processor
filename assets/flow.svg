@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 220" width="1100" height="220" role="img" aria-labelledby="t d">
+  <title id="t">End-to-end data flow</title>
+  <desc id="d">A new row in public.users fires a pg_net trigger that posts to an n8n webhook, which verifies the user through the Supabase REST API, generates an onboarding text file and uploads it to the assets bucket.</desc>
+  <defs>
+    <style>
+      .box  { fill: #1e293b; stroke: #34d399; stroke-width: 2; }
+      .h    { font: 700 16px 'Segoe UI', Arial, sans-serif; fill: #ffffff; }
+      .s    { font: 400 13px 'Segoe UI', Arial, sans-serif; fill: #94a3b8; }
+      .n    { font: 700 13px 'Segoe UI', Arial, sans-serif; fill: #6ee7b7; }
+      .flow { stroke: #fbbf24; stroke-width: 3; stroke-dasharray: 6 6; animation: dash 1s linear infinite; }
+      @keyframes dash { to { stroke-dashoffset: -12; } }
+    </style>
+  </defs>
+  <rect width="1100" height="220" rx="16" fill="#0f172a"/>
+
+  <g>
+    <rect class="box" x="10"  y="50" width="190" height="120" rx="12"/>
+    <text class="n" x="105" y="76"  text-anchor="middle">1</text>
+    <text class="h" x="105" y="102" text-anchor="middle">public.users</text>
+    <text class="s" x="105" y="124" text-anchor="middle">new row inserted</text>
+    <text class="s" x="105" y="144" text-anchor="middle">(RLS enabled)</text>
+  </g>
+  <g>
+    <rect class="box" x="230" y="50" width="190" height="120" rx="12"/>
+    <text class="n" x="325" y="76"  text-anchor="middle">2</text>
+    <text class="h" x="325" y="102" text-anchor="middle">on_user_insert</text>
+    <text class="s" x="325" y="124" text-anchor="middle">AFTER INSERT trigger</text>
+    <text class="s" x="325" y="144" text-anchor="middle">pg_net HTTP POST</text>
+  </g>
+  <g>
+    <rect class="box" x="450" y="50" width="190" height="120" rx="12"/>
+    <text class="n" x="545" y="76"  text-anchor="middle">3</text>
+    <text class="h" x="545" y="102" text-anchor="middle">n8n Webhook</text>
+    <text class="s" x="545" y="124" text-anchor="middle">POST /webhook/new-user</text>
+    <text class="s" x="545" y="144" text-anchor="middle">Verify User (REST GET)</text>
+  </g>
+  <g>
+    <rect class="box" x="670" y="50" width="190" height="120" rx="12"/>
+    <text class="n" x="765" y="76"  text-anchor="middle">4</text>
+    <text class="h" x="765" y="102" text-anchor="middle">Code node</text>
+    <text class="s" x="765" y="124" text-anchor="middle">builds onboarding text</text>
+    <text class="s" x="765" y="144" text-anchor="middle">onboarding_&lt;id&gt;.txt</text>
+  </g>
+  <g>
+    <rect class="box" x="890" y="50" width="190" height="120" rx="12"/>
+    <text class="n" x="985" y="76"  text-anchor="middle">5</text>
+    <text class="h" x="985" y="102" text-anchor="middle">Storage: assets</text>
+    <text class="s" x="985" y="124" text-anchor="middle">Upload File (POST)</text>
+    <text class="s" x="985" y="144" text-anchor="middle">then JSON 200 response</text>
+  </g>
+
+  <line class="flow" x1="200" y1="110" x2="230" y2="110"/>
+  <line class="flow" x1="420" y1="110" x2="450" y2="110"/>
+  <line class="flow" x1="640" y1="110" x2="670" y2="110"/>
+  <line class="flow" x1="860" y1="110" x2="890" y2="110"/>
+</svg>

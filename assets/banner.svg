@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 280" width="1200" height="280" role="img" aria-labelledby="t d">
+  <title id="t">Database Webhook-Driven File Asset Processor</title>
+  <desc id="d">Animated banner showing a flow from a Supabase users insert to a pg_net trigger, an n8n webhook, verification and file generation, and a Supabase Storage upload.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f172a">
+        <animate attributeName="stop-color" values="#0f172a;#064e3b;#0f172a" dur="8s" repeatCount="indefinite"/>
+      </stop>
+      <stop offset="1" stop-color="#1e1b4b">
+        <animate attributeName="stop-color" values="#1e1b4b;#0f172a;#1e1b4b" dur="8s" repeatCount="indefinite"/>
+      </stop>
+    </linearGradient>
+    <style>
+      .title { font: 700 40px 'Segoe UI', Arial, sans-serif; fill: #ffffff; }
+      .sub   { font: 400 20px 'Segoe UI', Arial, sans-serif; fill: #6ee7b7; }
+      .lbl   { font: 500 14px 'Segoe UI', Arial, sans-serif; fill: #cbd5e1; }
+      .flow  { stroke-dasharray: 8 8; animation: dash 1.2s linear infinite; }
+      @keyframes dash { to { stroke-dashoffset: -16; } }
+    </style>
+  </defs>
+
+  <rect width="1200" height="280" rx="18" fill="url(#bg)"/>
+
+  <text class="title" x="600" y="90" text-anchor="middle" opacity="0">
+    Database Webhook-Driven File Asset Processor
+    <animate attributeName="opacity" from="0" to="1" dur="1.2s" fill="freeze"/>
+  </text>
+  <text class="sub" x="600" y="130" text-anchor="middle" opacity="0">
+    Tayana Academy · Lesson 5 · Supabase Integration
+    <animate attributeName="opacity" from="0" to="1" begin="0.6s" dur="1.2s" fill="freeze"/>
+  </text>
+
+  <line class="flow" x1="180" y1="205" x2="1020" y2="205" stroke="#34d399" stroke-width="3"/>
+
+  <g fill="#10b981">
+    <circle cx="180" cy="205" r="12"><animate attributeName="r" values="10;15;10" dur="2s" begin="0s" repeatCount="indefinite"/></circle>
+    <circle cx="390" cy="205" r="12"><animate attributeName="r" values="10;15;10" dur="2s" begin="0.4s" repeatCount="indefinite"/></circle>
+    <circle cx="600" cy="205" r="12"><animate attributeName="r" values="10;15;10" dur="2s" begin="0.8s" repeatCount="indefinite"/></circle>
+    <circle cx="810" cy="205" r="12"><animate attributeName="r" values="10;15;10" dur="2s" begin="1.2s" repeatCount="indefinite"/></circle>
+    <circle cx="1020" cy="205" r="12"><animate attributeName="r" values="10;15;10" dur="2s" begin="1.6s" repeatCount="indefinite"/></circle>
+  </g>
+
+  <circle r="6" fill="#fde68a">
+    <animateMotion dur="4s" repeatCount="indefinite" path="M180 205 L1020 205"/>
+  </circle>
+
+  <text class="lbl" x="180"  y="245" text-anchor="middle">users INSERT</text>
+  <text class="lbl" x="390"  y="245" text-anchor="middle">pg_net trigger</text>
+  <text class="lbl" x="600"  y="245" text-anchor="middle">n8n webhook</text>
+  <text class="lbl" x="810"  y="245" text-anchor="middle">verify + generate</text>
+  <text class="lbl" x="1020" y="245" text-anchor="middle">Storage upload</text>
+</svg>
